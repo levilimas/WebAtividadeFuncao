@@ -110,9 +110,71 @@ Validação feita no backend para garantir integridade.
 
 ---
 
-## Banco de Dados
+## Banco de Dados (.mdf) — Como executar
 
-O sistema utiliza SQL Server LocalDB.
+Este repositório inclui o banco de dados em formato **SQL Server LocalDB (.mdf)**, conforme exigido no teste, para permitir que o avaliador execute o projeto localmente sem necessidade de scripts adicionais.
+
+### Pré-requisitos
+- Visual Studio (recomendado)
+- SQL Server Express LocalDB instalado (normalmente já vem com Visual Studio)
+- (Opcional) SQL Server Management Studio (SSMS) para anexar manualmente
+
+---
+
+## Opção 1 (Recomendada): anexar automaticamente pelo Visual Studio
+
+1. Abra a solution no Visual Studio
+2. No menu: **View > SQL Server Object Explorer**
+3. Expanda:  
+   **(localdb)\MSSQLLocalDB**
+4. Clique com o botão direito em **Databases** > **Add New Database...**
+5. Selecione o arquivo `.mdf` que está no repositório (pasta do projeto/banco)
+6. Confirme e aguarde o banco aparecer na lista de Databases
+
+Após isso, o banco estará anexado e pronto para uso.
+
+---
+
+## Opção 2: anexar manualmente pelo SSMS
+
+1. Abra o **SQL Server Management Studio**
+2. Em **Server name**, use:  
+   `(localdb)\MSSQLLocalDB`
+3. Conecte
+4. Clique com o botão direito em **Databases** > **Attach...**
+5. Clique em **Add...**
+6. Selecione o arquivo `.mdf` do repositório
+7. Confirme
+
+---
+
+## Connection String
+
+No arquivo `Web.config`, ajuste a connection string para apontar para o LocalDB e para o banco anexado:
+
+### Exemplo (por nome do catálogo)
+```xml
+<connectionStrings>
+  <add name="FI_TESTE"
+       connectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FI_TESTE;Integrated Security=True;"
+       providerName="System.Data.SqlClient" />
+</connectionStrings>
+```
+
+### Alternativa (por caminho do MDF)
+
+#### Caso o banco esteja sendo carregado por caminho físico, utilize:
+
+```xml
+<connectionStrings>
+  <add name="FI_TESTE"
+       connectionString="Data Source=(localdb)\MSSQLLocalDB;
+                         AttachDbFilename=|DataDirectory|\FI_TESTE.mdf;
+                         Integrated Security=True;
+                         MultipleActiveResultSets=True;"
+       providerName="System.Data.SqlClient" />
+</connectionStrings>
+```
 
 ## Testes Realizados
 
