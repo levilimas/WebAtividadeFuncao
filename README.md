@@ -162,7 +162,7 @@ CREATE TABLE BENEFICIARIOS (
 
 ### Configuração da Connection String
 
-No arquivo Web.config, configure:
+#### No arquivo Web.config, configure:
 ---
 ```xml
 <connectionStrings>
@@ -173,3 +173,25 @@ No arquivo Web.config, configure:
 ```
 ---
 
+
+## Testes Realizados
+
+### Testes manuais cobrindo:
+
+- Inclusão de cliente com múltiplos beneficiários
+  
+
+- Alteração com inclusão e exclusão de beneficiários
+  
+
+- Validação de CPF inválido
+  
+
+- Tentativa de CPF duplicado
+  
+
+- Persistência correta após alteração
+  
+
+- Integridade transacional
+  
