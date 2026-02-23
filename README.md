@@ -187,6 +187,6 @@ CREATE TABLE BENEFICIARIOS (
 
 - Validação de CPF inválido e Tentativa de CPF duplicado
 
-[cd026423-9ee6-4d8b-95e3-b7d26a43272e.webm](https://github.com/user-attachments/assets/b18ac476-d802-4b19-b9c3-5e8e5a0a726a)
+  [cd026423-9ee6-4d8b-95e3-b7d26a43272e.webm](https://github.com/user-attachments/assets/b18ac476-d802-4b19-b9c3-5e8e5a0a726a)
 
   
