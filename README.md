@@ -157,3 +157,19 @@ CREATE TABLE BENEFICIARIOS (
         REFERENCES CLIENTES(ID)
         ON DELETE CASCADE
 );
+---
+```
+
+### Configuração da Connection String
+
+No arquivo Web.config, configure:
+---
+```xml
+<connectionStrings>
+  <add name="FI_TESTE"
+       connectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FI_TESTE;Integrated Security=True;"
+       providerName="System.Data.SqlClient" />
+</connectionStrings>
+```
+---
+
