@@ -179,19 +179,14 @@ CREATE TABLE BENEFICIARIOS (
 ### Testes manuais cobrindo:
 
 - Inclusão de cliente com múltiplos beneficiários
-  
-
 - Alteração com inclusão e exclusão de beneficiários
-  
-
-- Validação de CPF inválido
-  
-
-- Tentativa de CPF duplicado
-  
-
 - Persistência correta após alteração
   
+  [af2b50ff-c5e4-4f70-acf1-375169c2bfb2.webm](https://github.com/user-attachments/assets/2cabd0de-035e-4c9e-8433-15b064cf57b4)
 
-- Integridade transacional
+
+- Validação de CPF inválido e Tentativa de CPF duplicado
+
+  [cd026423-9ee6-4d8b-95e3-b7d26a43272e.webm](https://github.com/user-attachments/assets/b18ac476-d802-4b19-b9c3-5e8e5a0a726a)
+
   
