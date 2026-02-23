@@ -1,0 +1,19 @@
+﻿@model WebAtividadeEntrevista.Models.ClienteModel
+@{
+    ViewBag.Title = "Alterar Cliente";
+}
+
+@section scripts{
+    <script>
+      window.urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
+      window.urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
+
+      window.obj = @Html.Raw(Json.Encode(Model));
+      window.beneficiarios = @Html.Raw(Json.Encode(Model?.Beneficiarios ?? new List<WebAtividadeEntrevista.Models.BeneficiarioModel>()));
+    </script>
+
+    @Scripts.Render("~/bundles/altClientes")
+}
+
+<h2>@Html.Raw(ViewBag.Title)</h2>
+@Html.Partial("Forms", Model)

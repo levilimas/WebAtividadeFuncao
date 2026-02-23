@@ -1,0 +1,54 @@
+
+<div id="beneficiariosModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                <h4 class="modal-title">Beneficiarios</h4>
+            </div>
+            <div class="modal-body">
+                <div id="formBeneficiario">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="CPFBeneficiario">CPF:</label>
+                                <input type="text" class="form-control" id="CPFBeneficiario" name="CPF" placeholder="Ex.: 010.011.111-00" maxlength="14">
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="NomeBeneficiario">Nome:</label>
+                                <input type="text" class="form-control" id="NomeBeneficiario" name="Nome" placeholder="Ex.: Maria">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>&nbsp;</label>
+                                <button type="button" class="btn btn-sm btn-success form-control" id="btnIncluirBeneficiario">Incluir</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table" id="gridBeneficiarios">
+                            <thead>
+                                <tr>
+                                    <th>CPF</th>
+                                    <th>Nome</th>
+                                    <th>Acoes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,150 @@
+@model WebAtividadeEntrevista.Models.ClienteModel
+@using Newtonsoft.Json
+
+@{
+    bool isEdicao = Model != null && Model.Id > 0;
+
+    string urlPost = isEdicao
+        ? Url.Action("Alterar", "Cliente")
+        : Url.Action("Incluir", "Cliente");
+
+    string urlRetorno = Url.Action("Index", "Cliente");
+}
+
+<script>
+    window.urlPost = '@urlPost';
+    window.urlRetorno = '@urlRetorno';
+
+    window.obj = @Html.Raw(JsonConvert.SerializeObject(Model ?? new WebAtividadeEntrevista.Models.ClienteModel()));
+
+    window.beneficiarios = @Html.Raw(JsonConvert.SerializeObject(Model?.Beneficiarios ?? new List<WebAtividadeEntrevista.Models.BeneficiarioModel>()));
+</script>
+
+<form id="formCadastro" method="post">
+    <input type="hidden" id="Id" name="Id" value="@(Model?.Id ?? 0)" />
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input required type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Sobrenome">Sobrenome:</label>
+                <input required type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="CPF">CPF:</label>
+                <input required type="text" inputmode="numeric" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 000.000.000-00" maxlength="14">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Nacionalidade">Nacionalidade:</label>
+                <input required type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="CEP">CEP:</label>
+                <input required inputmode="numeric" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Estado">Estado:</label>
+                <select required id="Estado" class="form-control" name="Estado">
+                    <option value="">Selecione</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapa</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceara</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espirito Santo</option>
+                    <option value="GO">Goias</option>
+                    <option value="MA">Maranhao</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Para</option>
+                    <option value="PB">Paraiba</option>
+                    <option value="PR">Parana</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piaui</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondonia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">Sao Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="Cidade">Cidade:</label>
+                <input required type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="Logradouro">Logradouro:</label>
+                <input required type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Email">E-mail:</label>
+                <input required type="email" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="Telefone">Telefone:</label>
+                <input required type="tel" inputmode="numeric" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#beneficiariosModal">
+                Beneficiarios
+            </button>
+        </div>
+    </div>
+
+    <input type="hidden" id="BeneficiariosJson" name="BeneficiariosJson" />
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-sm btn-success">Salvar</button>
+                @Html.ActionLink("Voltar", "Index", "Cliente", new { }, new { @class = "btn btn-sm btn-danger" })
+            </div>
+        </div>
+    </div>
+</form>
+
+@Html.Partial("~/Views/Beneficiario/BeneficiarioModal.cshtml")
