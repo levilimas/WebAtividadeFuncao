@@ -108,71 +108,11 @@ Validação feita no backend para garantir integridade.
 
 ### 5. Não Versionamento de Banco (.mdf)
 
-Apesar do teste fornecer um `.mdf`, optou-se por não versionar o arquivo por boas práticas:
-
-- Arquivos físicos de banco são dependentes de ambiente
-- Dificultam portabilidade
-- Geram conflitos desnecessários
-
-Foi incluído script SQL para recriação do banco.
-
 ---
 
 ## Banco de Dados
 
 O sistema utiliza SQL Server LocalDB.
-
-### Script de Criação
-
-Execute no SQL Server:
-
-```sql
-CREATE DATABASE FI_TESTE;
-GO
-
-USE FI_TESTE;
-GO
-
-CREATE TABLE CLIENTES (
-    ID BIGINT IDENTITY(1,1) PRIMARY KEY,
-    NOME VARCHAR(50) NOT NULL,
-    SOBRENOME VARCHAR(255) NOT NULL,
-    CPF VARCHAR(11) NOT NULL,
-    NACIONALIDADE VARCHAR(50) NOT NULL,
-    CEP VARCHAR(9) NOT NULL,
-    ESTADO VARCHAR(2) NOT NULL,
-    CIDADE VARCHAR(50) NOT NULL,
-    LOGRADOURO VARCHAR(500) NOT NULL,
-    EMAIL VARCHAR(2079) NOT NULL,
-    TELEFONE VARCHAR(15) NOT NULL
-);
-
-CREATE TABLE BENEFICIARIOS (
-    ID BIGINT IDENTITY(1,1) PRIMARY KEY,
-    IDCLIENTE BIGINT NOT NULL,
-    CPF VARCHAR(11) NOT NULL,
-    NOME VARCHAR(100) NOT NULL,
-    CONSTRAINT FK_BENEFICIARIO_CLIENTE
-        FOREIGN KEY (IDCLIENTE)
-        REFERENCES CLIENTES(ID)
-        ON DELETE CASCADE
-);
----
-```
-
-### Configuração da Connection String
-
-#### No arquivo Web.config, configure:
----
-```xml
-<connectionStrings>
-  <add name="FI_TESTE"
-       connectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=FI_TESTE;Integrated Security=True;"
-       providerName="System.Data.SqlClient" />
-</connectionStrings>
-```
----
-
 
 ## Testes Realizados
 
