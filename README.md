@@ -34,7 +34,7 @@ O projeto está estruturado em camadas:
 Responsável por:
 
 - Controllers
-- Views (Razor)
+- Views
 - Manipulação de interface com jQuery e Bootstrap
 - Comunicação AJAX
 
