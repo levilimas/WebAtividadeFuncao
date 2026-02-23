@@ -11,15 +11,6 @@
     string urlRetorno = Url.Action("Index", "Cliente");
 }
 
-<script>
-    window.urlPost = '@urlPost';
-    window.urlRetorno = '@urlRetorno';
-
-    window.obj = @Html.Raw(JsonConvert.SerializeObject(Model ?? new WebAtividadeEntrevista.Models.ClienteModel()));
-
-    window.beneficiarios = @Html.Raw(JsonConvert.SerializeObject(Model?.Beneficiarios ?? new List<WebAtividadeEntrevista.Models.BeneficiarioModel>()));
-</script>
-
 <form id="formCadastro" method="post">
     <input type="hidden" id="Id" name="Id" value="@(Model?.Id ?? 0)" />
 

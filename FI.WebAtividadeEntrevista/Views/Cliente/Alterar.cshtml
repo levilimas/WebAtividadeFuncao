@@ -5,11 +5,10 @@
 
 @section scripts{
     <script>
-      window.urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
-      window.urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
-
-      window.obj = @Html.Raw(Json.Encode(Model));
-      window.beneficiarios = @Html.Raw(Json.Encode(Model?.Beneficiarios ?? new List<WebAtividadeEntrevista.Models.BeneficiarioModel>()));
+        window.urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
+        window.urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
+        window.obj = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model ?? new WebAtividadeEntrevista.Models.ClienteModel()));
+        window.beneficiarios = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model?.Beneficiarios ?? new List<WebAtividadeEntrevista.Models.BeneficiarioModel>()));
     </script>
 
     @Scripts.Render("~/bundles/altClientes")

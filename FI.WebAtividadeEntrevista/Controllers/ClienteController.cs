@@ -21,13 +21,13 @@ namespace WebAtividadeEntrevista.Controllers
         [HttpGet]
         public ActionResult Incluir()
         {
-            var model = new ClienteModel()
+            var model = new ClienteModel
             {
                 Id = 0,
                 Beneficiarios = new List<BeneficiarioModel>()
             };
 
-            return View("Forms", model);
+            return View(model);
         }
 
         [HttpPost]

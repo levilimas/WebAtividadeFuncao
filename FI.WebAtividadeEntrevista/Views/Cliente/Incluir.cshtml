@@ -1,15 +1,18 @@
-
+@model WebAtividadeEntrevista.Models.ClienteModel
 @{
     ViewBag.Title = "Cadastrar Cliente";
 }
+
 @section scripts{
     <script>
-          window.urlPost = '@Url.Action("Incluir", "Cliente", new { area = "" })';
-          window.urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
-          window.beneficiarios = [];
+        window.urlPost = '@Url.Action("Incluir", "Cliente", new { area = "" })';
+        window.urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
+        window.obj = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model ?? new WebAtividadeEntrevista.Models.ClienteModel()));
+        window.beneficiarios = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model?.Beneficiarios ?? new List<WebAtividadeEntrevista.Models.BeneficiarioModel>()));
     </script>
 
-    @Scripts.Render("~/bundles/clientes")
+    @Scripts.Render("~/bundles/Clientes")
 }
+
 <h2>@Html.Raw(ViewBag.Title)</h2>
-@Html.Partial("Forms")
+@Html.Partial("Forms", Model)
