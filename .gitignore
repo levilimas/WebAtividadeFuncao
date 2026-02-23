@@ -14,9 +14,6 @@ packages/
 .DS_Store
 Thumbs.db
 
-App_Data/*.mdf
-App_Data/*.ldf
-
 CopilotIndices/
 copilot-chat/
 FileContentIndex/
